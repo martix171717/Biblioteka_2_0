@@ -17,7 +17,7 @@ Go to the list of authors
 Go to the list of books
 Go to the list of borrowings
 
-On http://localhost:5000/books/ you can also add a new book but remember that you have to add new author first if he/she's not yet on the list to choose.
+On http://localhost:5000/books/ you can also add a new book but remember that you have to add new author first if he/she's not yet on the list to choose. To add new author go to http://localhost:5000/authors/.
 By click on the existing title you can see details of this book, you can change the data or delete it from database.
 
 On http://localhost:5000/authors/ you can see the list of authors. You can add new author as well.
