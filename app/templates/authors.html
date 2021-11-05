@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>The list of authors</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
+{%extends "index.html"%}
+
+{%block content%}
 <h2>The list of authors</h2>
-<a href="/books/">Go to the list of books</a><br><br>
-<a href="/borrowing/">Go to the list of borrowings</a><br><br>
 
 <table>
     <thead>
@@ -37,3 +30,4 @@
 </div>
 </body>
 </html>
+{% endblock %}

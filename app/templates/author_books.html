@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>The list of books of chosen author</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <h2>{{ author }}</h2>
-    <h2>The list of books</h2>
-    <a href="/books/">Go to the list of books</a><br>
-    <a href="/authors/">Go to the list of authors</a><br>
+{%extends "index.html"%}
+
+{%block content%}
+
+<h2>The list of books by author {{ author }}</h2>
+
     <table>
         <thead>
         <th>Id</th>
@@ -28,18 +22,5 @@
     <a href ="/authors/delete/{{author_id}}"><input type="submit" value="Delate the author"></a>
     <br><br>
 
-    <form method="POST" action="/authors/{{author_id}}">
-        {{ form.hidden_tag() }}
-        <table>
-            {% for field in form if field.widget.input_type != 'hidden' %}
-                <tr>
-                    <th>{{ field.label }} {% if field.flags.required %}*{% endif %}</th>
-                    <td>{{ field }}</td>
-                </tr>
-            {% endfor %}
-        </table>
-        <br>
-        <input type="submit" value="Usuń książkę z publikacji autora">
-    </form>
-</body>
-</html>
+
+{%endblock%}
