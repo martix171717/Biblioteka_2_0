@@ -11,9 +11,7 @@ class BooksForm(FlaskForm):
 
     @classmethod
     def new(cls):
-        # Instantiate the form
         form = cls()
-        # Update the choices for the author field
         form.author.choices = [x.name for x in Author.query.all()]
         return form
 
