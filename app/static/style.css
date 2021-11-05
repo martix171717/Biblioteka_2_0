@@ -1,0 +1,26 @@
+table {
+    border: 2px solid black;
+    
+}
+
+th {
+    border: 1px solid;
+    width: 150px;
+    height: 20px;
+    padding: 10px;
+    font-size: 20px;
+    background-color: papayawhip;
+}
+
+td {
+    height: 20px;
+    width: 180px;
+    border: 1px solid;
+    text-align: center;
+}
+
+tr:hover {background-color: #ddd;}
+
+input {
+    font-size: 16px;
+}
