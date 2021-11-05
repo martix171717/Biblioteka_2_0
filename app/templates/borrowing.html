@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The details about borrowings</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <a href="/authors/">Go to the list of authors</a><br><br>
+    <a href="/books/">Go to the list of books</a><br><br>
+    <table>
+        <thead>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Is borrowed?</th>
+        <th>When?</th>
+        <th>Who?</th>
+        </thead>
+    {% for borrow in borrowing %}    
+        <tr>
+            <td>{{ borrow.id }}</td>
+            <td>{{ borrow.id_book }}</td>
+            <td>{{ borrow.borrowed }}</td>
+            <td>{{ borrow.borrow_date }}</td>
+            <td>{{ borrow.where }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+    <br>
+    <form method="POST" action="/borrowing/">
+        {{ form2.hidden_tag() }}
+        <table>
+            {% for field in form2 if field.widget.input_type != 'hidden' %}
+                <tr>
+                    <th>{{ field.label }} {% if field.flags.required %}*{% endif %}</th>
+                    <td>{{ field }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <input type="submit" value="The book with the given id was returned">
+    </form>
+
+    <h2> Add: </h2>
+    <form method="POST" action="/borrowing/">
+        {{ form.hidden_tag() }}
+        <table>
+            {% for field in form if field.widget.input_type != 'hidden' %}
+                <tr>
+                    <th>{{ field.label }} {% if field.flags.required %}*{% endif %}</th>
+                    <td>{{ field }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <input type="submit" value="Save">
+    </form>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Library</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+<h2>The list of books in home library</h2>
+<a href="/authors/">Go to the list of authors</a><br><br>
+<a href="/borrowing/">Go to the list of borrowings</a><br><br>
+
+<table>
+    <thead>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Publication date</th>
+    </thead>
+{% for book in books %}
+    <tr>
+        <td><a href="/books/{{ book.id }}">{{ book.title }}</a></td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.year }}</td>
+    </tr>
+{% endfor %}
+</table>
+<div>
+    <h2> Add a new book to the library: </h2>
+    <form method="POST" action="/books/">
+        {{ form.hidden_tag() }}
+        <table>
+            {% for field in form if field.widget.input_type != 'hidden' %}
+                <tr>
+                    <th>{{ field.label }} {% if field.flags.required %}*{% endif %}</th>
+                    <td>{{ field }}</td>
+                </tr>
+            {% endfor %}
+        </table><br>
+        <input type="submit" value="Save">
+    </form>
+</div>
+</body>
+</html>
