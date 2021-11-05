@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Library</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Welcome to my library!</h2><br>
+    <a href="/authors/">Go to the list of authors</a><br><br>
+    <a href="/books/">Go to the list of books</a><br><br>
+    <a href="/borrowing/">Go to the list of borrowings</a><br><br>
+    
+    {% block content%}
+    {% endblock%}
+</body>
+</html>
