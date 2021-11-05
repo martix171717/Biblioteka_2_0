@@ -26,12 +26,12 @@ class Book(db.Model):
         if self.borrowed:
             return f"{self.title}, {self.author}, {self.year}, {self.borrowed[-1]}"  
         else:
-            return f"{self.title}, {self.author}, {self.year}, the book is at home library"
+            return f"{self.title}, {self.author}, {self.year}, the book is available in the library"
     def __str__(self):
         if self.borrowed:
             return f"{self.title}, {self.author}, {self.year}, {self.borrowed[-1]}"  
         else:
-            return f"{self.title}, {self.author}, {self.year}, the book is at home library"  
+            return f"{self.title}, {self.author}, {self.year}, the book is available in the library"  
 
 
 class Borrowing(db.Model):
@@ -45,10 +45,10 @@ class Borrowing(db.Model):
         if self.borrowed is True:
             return f"borrowed to {self.where}, {self.borrow_date}"
         else:
-            return f"the book is at home library"
+            return f"Available in the Library"
          
     def __str__(self):
         if self.borrowed is True:
             return f"borrowed to {self.where}, {self.borrow_date}"
         else:
-            return f"the book is at home library"
+            return f"Available in the Library"
