@@ -4,7 +4,7 @@ from app.models import Book, Author, Borrowing
 from app.forms import BooksForm, AuthorForm, DeleteForm, BorrowingForm
 from datetime import date
 
-#wyświetla wszystkie książki w bazie lub dodaje nową książkę
+#wyświetla wszystkie książki w bazie, pozwala na dodanie nowej książki
 @app.route("/books/", methods=["GET", "POST"])
 def books_list():
     form = BooksForm.new()
@@ -22,7 +22,7 @@ def books_list():
     return render_template("books.html", books=books_all, form=form)
 
 
-#wyświetla wszystkich autorów w bazie lub tworzy nową pozycję autora
+#wyświetla wszystkich autorów w bazie, pozwala utworzyć nową pozycję autora
 @app.route("/authors/", methods=["GET", "POST"])
 def authors_list():
     form = AuthorForm()
@@ -36,7 +36,7 @@ def authors_list():
             return redirect(url_for("authors_list"))
     return render_template("authors.html", authors=authors, form=form)
 
-
+#wyświetla szczegóły o wypozyczeniach, pozwala na wypożyczenie i zwrot wybranej ksiązki
 @app.route("/borrowing/", methods=["GET", "POST"])
 def borrowing_list():
     form = BorrowingForm.new()
@@ -61,7 +61,7 @@ def borrowing_list():
     return render_template("borrowing.html", borrowing=borrowing, form=form, books=books, form2=form2)
 
 
-# pokazuje konkretny rekord z bazy danych, pozwala na zmianę danych lub usunięcie książki  
+#wyświetla konkretny rekord z bazy danych, umożliwia zmianę danych lub usunięcie książki  
 @app.route("/books/<int:book_id>", methods=["GET", "POST"])
 def get_book(book_id):
     form = BooksForm().new()
@@ -77,7 +77,7 @@ def get_book(book_id):
         return redirect('/books/<int:book_id>')
     return render_template("book.html", book=book, form=form, book_id=book_id)
 
-
+#wyświetla konkretnego autora z bazy danych, umożliwia usunięcie autora
 @app.route("/authors/<int:author_id>", methods=["GET", "POST"])
 def get_authors_books(author_id):
     form = DeleteForm()

@@ -4,7 +4,6 @@ author_book = db.Table('author_book',
     db.Column('author_id', db.Integer, db.ForeignKey('author.id'), primary_key=True),
     db.Column('book_id', db.Integer, db.ForeignKey('book.id'), primary_key=True)
 )
-
 class Author(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), index=True)
