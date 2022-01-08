@@ -4,6 +4,10 @@ from app.models import Book, Author, Borrowing
 from app.forms import BooksForm, AuthorForm, DeleteForm, BorrowingForm
 from datetime import date
 
+@app.route("/", methods=["GET"])
+def main():
+    return render_template("index.html")
+
 #wyświetla wszystkie książki w bazie, pozwala na dodanie nowej książki
 @app.route("/books/", methods=["GET", "POST"])
 def books_list():
